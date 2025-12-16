@@ -1,0 +1,9 @@
+.venv
+test_data
+__pycache__/
+*.pyc
+.env
+.onnx
+*.onnx
+predicciones_*.csv
+logs/

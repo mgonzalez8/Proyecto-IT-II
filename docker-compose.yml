@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+        AWS_SECRET_KEY: ${AWS_SECRET_KEY}
+        AWS_BUCKET: ${AWS_BUCKET}
+        MODEL_FILE: ${MODEL_FILE}
+        ENV: dev
+    ports:
+      - "8082:8501"
+    environment:
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_SECRET_KEY=${AWS_SECRET_KEY}
+      - AWS_BUCKET=${AWS_BUCKET}
+      - MODEL_FILE=${MODEL_FILE}
+      - ENV=dev
+    restart: unless-stopped
+    volumes:
+      - ./app:/app
+      - ./logs:/logs
